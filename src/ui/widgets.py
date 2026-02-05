@@ -280,8 +280,7 @@ class InteractivePreviewWidget(QWidget):
         
         self.btn_zoom_in.setObjectName("ToolButton")
         self.btn_zoom_out.setObjectName("ToolButton")
-        self.btn_fit.setObjectName("ToolButton")
-        
+        self.btn_fit.setObjectName("ToolButton")        
         self.btn_zoom_in.setFixedWidth(40)
         self.btn_zoom_out.setFixedWidth(40)
         self.btn_fit.setFixedWidth(60)
