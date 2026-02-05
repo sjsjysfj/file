@@ -1,4 +1,4 @@
-import PyInstaller.__main__
+import subprocess
 import shutil
 import os
 import zipfile
@@ -7,17 +7,22 @@ def build():
     print("Starting build...")
     
     # PyInstaller arguments
-    args = [
+    cmd = [
+        'pyinstaller',
         'src/main.py',
         '--name=ImageExpert',
         '--onefile',
         '--windowed',
         '--noconfirm',
-        '--add-data=src;src',  # PyInstaller handles this separator correctly when passed as list
+        '--add-data=src;src',
     ]
     
-    PyInstaller.__main__.run(args)
-    print("Build complete.")
+    try:
+        subprocess.check_call(cmd, shell=True)
+        print("Build complete.")
+    except subprocess.CalledProcessError as e:
+        print(f"Build failed with error: {e}")
+        return
 
     # Post-build: Create release folder
     if os.path.exists('release'):
